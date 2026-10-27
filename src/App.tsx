@@ -1,4 +1,4 @@
-import { absoluteAssetUrl } from './urls';
+import { absoluteAssetUrl, assetUrl } from './urls';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
@@ -18,16 +18,19 @@ const NotFound = import.meta.env.SSR ? ServerNotFound : lazy(() => import('./pag
 import { metadata, siteUrl, publicPageUrl } from './data';
 gsap.registerPlugin(ScrollTrigger,SplitText);
 const nav=[['/','Home'],['/about','About'],['/books','Books'],['/frankfurt-book-fair-2026','Frankfurt 2026'],['/news','News'],['/contact','Contact']];
+function Brand({footer=false}:{footer?:boolean}){
+  return <Link className={`wordmark${footer?' footer-brand':''}`} to="/" aria-label="Brian Palmieri home"><img className="brand-logo" src={assetUrl('assets/brian-palmieri-publications-logo.png')} alt="Brian Palmieri Publications" width="210" height="183" loading={footer?'lazy':'eager'} fetchPriority={footer?undefined:'high'}/>{!footer&&<span>BRIAN PALMIERI<small>STORIES BEYOND THE ORDINARY</small></span>}</Link>;
+}
 function Header() {
   const [open,setOpen]=useState(false); const [scrolled,setScrolled]=useState(false);const location=useLocation();const dialog=useRef<HTMLDialogElement>(null);
   useEffect(()=>{setOpen(false);},[location.pathname]);
   useEffect(()=>{const update=()=>setScrolled(window.scrollY>30);update();window.addEventListener('scroll',update,{passive:true});return()=>window.removeEventListener('scroll',update);},[]);
   useEffect(()=>{if(open){dialog.current?.showModal();document.body.style.overflow='hidden';}else{dialog.current?.close();document.body.style.overflow='';}return()=>{document.body.style.overflow='';};},[open]);
-  return <header className={`site-header ${scrolled?'is-scrolled':''}`}><div className="header-inner page-width"><Link className="wordmark" to="/" aria-label="Brian Palmieri home"><span className="brand-star" aria-hidden="true">✦</span><span>BRIAN PALMIERI<small>STORIES BEYOND THE ORDINARY</small></span></Link><nav className="desktop-nav" aria-label="Primary navigation">{nav.map(([to,label])=><NavLink key={to} to={to} end={to==='/' || to==='/books'} className={to.includes('frankfurt')?'event-nav':''}>{to.includes('frankfurt')&&<span aria-hidden="true">✦</span>}{label}</NavLink>)}</nav><button className="mobile-menu icon-button" onClick={()=>setOpen(true)} aria-label="Open navigation" aria-haspopup="dialog"><Menu/></button></div>
-    <dialog ref={dialog} className="nav-dialog" onCancel={()=>setOpen(false)} aria-label="Site navigation"><button className="nav-close icon-button" onClick={()=>setOpen(false)} aria-label="Close navigation"><X/></button><p className="eyebrow">BRIAN PALMIERI</p><nav aria-label="Mobile navigation">{nav.map(([to,label],i)=><NavLink key={to} to={to} end={to==='/'} onClick={()=>setOpen(false)}><span>0{i+1}</span>{label}<ArrowUpRight size={23}/></NavLink>)}</nav><p className="nav-dialog-note">Stories beyond the ordinary.</p></dialog>
+  return <header className={`site-header ${scrolled?'is-scrolled':''}`}><div className="header-inner page-width"><Brand/><nav className="desktop-nav" aria-label="Primary navigation">{nav.map(([to,label])=><NavLink key={to} to={to} end={to==='/' || to==='/books'} className={to.includes('frankfurt')?'event-nav':''}>{to.includes('frankfurt')&&<span aria-hidden="true">✦</span>}{label}</NavLink>)}</nav><button className="mobile-menu icon-button" onClick={()=>setOpen(true)} aria-label="Open navigation" aria-haspopup="dialog"><Menu/></button></div>
+    <dialog ref={dialog} className="nav-dialog" onCancel={()=>setOpen(false)} aria-label="Site navigation"><button className="nav-close icon-button" onClick={()=>setOpen(false)} aria-label="Close navigation"><X/></button><img className="menu-brand-logo" src={assetUrl('assets/brian-palmieri-publications-logo.png')} alt="Brian Palmieri Publications" width="210" height="183"/><nav aria-label="Mobile navigation">{nav.map(([to,label],i)=><NavLink key={to} to={to} end={to==='/'} onClick={()=>setOpen(false)}><span>0{i+1}</span>{label}<ArrowUpRight size={23}/></NavLink>)}</nav><p className="nav-dialog-note">Stories beyond the ordinary.</p></dialog>
   </header>;
 }
-function Footer(){return <footer className="site-footer"><div className="page-width footer-top"><Link className="wordmark" to="/"><span className="brand-star" aria-hidden="true">✦</span><span>BRIAN PALMIERI<small>STORIES BEYOND THE ORDINARY</small></span></Link><p>A world beyond the page.<br/>A story waiting for you.</p><nav aria-label="Footer navigation">{nav.slice(1).map(([to,label])=><Link key={to} to={to}>{label==='Frankfurt 2026'?'Frankfurt Book Fair 2026':label}</Link>)}</nav></div><div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Brian Palmieri. All rights reserved.</span><span>FAITH. WONDER. IMAGINATION.</span><a href="#top">Back to top ↑</a></div></footer>;}
+function Footer(){return <footer className="site-footer"><div className="page-width footer-top"><Brand footer/><p>A world beyond the page.<br/>A story waiting for you.</p><nav aria-label="Footer navigation">{nav.slice(1).map(([to,label])=><Link key={to} to={to}>{label==='Frankfurt 2026'?'Frankfurt Book Fair 2026':label}</Link>)}</nav></div><div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Brian Palmieri. All rights reserved.</span><span>FAITH. WONDER. IMAGINATION.</span><a href="#top">Back to top ↑</a></div></footer>;}
 function PageEffects(){
   const location=useLocation();const main=useRef<HTMLElement|null>(null);
   useEffect(()=>{main.current=document.getElementById('main');

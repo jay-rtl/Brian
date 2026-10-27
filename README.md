@@ -6,6 +6,8 @@ The current visual direction combines a **dark navy homepage hero** with a **lig
 
 The homepage features a large original generated open-book background, with the two official covers layered above it. Responsive WebP variants are in `public/assets/story-pages-hero*.webp`; the saved source image, complete generation prompt, and provenance are in `design/`.
 
+Official branding uses the supplied Brian Palmieri Publications BP/feather/open-book mark in the header, footer, mobile menu, and favicon. The logo is a lossless extraction from the matching artwork on the original Observer cover; its dark background and proportions are preserved. Source details are in `design/official-logo.md`.
+
 ## Run
 
 ```powershell

@@ -169,3 +169,35 @@ Commands: `npm run build`; `npm run test:e2e` (11 passed, 2.2 minutes); `git dif
 No known defect from the performed checks. Existing approved author content, retailer links, excerpts, contact delivery, and privacy details remain pending. Status: **READY FOR REVIEW**. Next action: refresh and review the live homepage and menu.
 
 Published successfully by https://github.com/jay-rtl/Brian/actions/runs/40407765399 from source commit `ac3723de497dbe09a023156aad4c9a0759981aed`. Live command `node scripts/verify-deployment.mjs https://jay-rtl.github.io/Brian/` passed for all eight routes and key interactions with zero runtime/console errors. Separate live Chrome checks at 1440/1024/900/390/320px confirmed menu sizes 16/14/52/36/36px, dark hero background `rgb(11, 23, 38)`, ivory hero text, light root background, and no horizontal overflow. Live desktop hero and phone-menu screenshots were captured and reviewed.
+
+## Official Brian Palmieri Publications logo
+
+### Implemented and design review
+
+Replaced the artificial brand-star treatment in the shared header and footer with the official BP/feather/open-book logo. Added it to the mobile navigation dialog and replaced the browser favicon with a full-mark PNG derivative. `src/App.tsx` now shares a reusable `Brand` component; `src/styles.css` defines responsive logo sizing; `index.html` references the official-mark favicon. The header retains readable adjacent HTML author text. The footer displays the complete mark at a larger size. The larger navigation fonts, dark homepage hero, and light content pages are retained.
+
+The inline reference matches the logo printed on the supplied original Observer cover. The website asset `public/assets/brian-palmieri-publications-logo.png` is a lossless 210×183 extraction of that artwork; a raw pixel comparison against the source crop returned identical pixels. It preserves the original dark texture, colors, design, and aspect ratio. No AI generation, redrawing, recoloring, background removal, or stretching was used. The full-mark favicon uses contain-fit scaling with dark padding. See `design/official-logo.md` for source coordinates and placement details.
+
+Actual desktop header, phone menu, and footer screenshots were inspected. Additional layout checks at 320/390/900/1024/1440px found no horizontal overflow or logo/menu overlap; rendered logo proportions matched 210:183. Header widths are 56–78px; footer uses 156–176px. The source crop is not a vector or a higher-resolution standalone file; a future higher-resolution original can replace it if supplied.
+
+### Audit matrix
+
+| Category / subcheck | Status | Evidence and scope |
+| --- | --- | --- |
+| Functionality | PASS | All 11 browser tests passed in 2.2 minutes, including eight routes and their images, navigation, menu focus/Escape, gallery, filters, form validity/disabled delivery, optional 3D, and fallback. New logo decoded and favicon returned HTTP 200 in local preview. |
+| SEO | PASS | Eight pages retained visible content and unique titles/descriptions without JavaScript. Branding has accessible names and the favicon URL is updated. No book/author facts or canonical logic changed. |
+| SEO — external services | NOT TESTED | Search indexing, favicon refresh by search engines, and third-party social preview rendering were not verified. |
+| Responsive/Visual | PASS | Three-width route checks passed; additional logo checks at five widths preserved the ratio and prevented header overlap. Representative logo placements were visually inspected. |
+| Accessibility — tested scope | PASS | axe A/AA-tagged checks across all eight pages reported no violations. Keyboard/menu/focus tests passed. Logo images have descriptive alternatives, and home links retain explicit accessible names. |
+| Accessibility — broader review | NOT TESTED | No full screen-reader/manual conformance assessment or physical-device verification. |
+| Security/Privacy — change scope | PASS | Local artwork, markup, CSS, and metadata only. No new external image hosts, dependencies, credentials, tracking, storage, or submission behavior. |
+| Security/Privacy — broader assessment | NOT TESTED | Existing backend/privacy/legal review remains outstanding. |
+| Performance — local observation | PASS | One unthrottled local desktop Chrome sample recorded LCP 300 ms and CLS 0.002523. Logo PNG is 18,773 bytes and favicon 6,357 bytes. Intrinsic dimensions reserve space; header/menu/footer reuse the same image URL. No new runtime dependency. |
+| Performance — field/mobile hardware | NOT TESTED | No field Core Web Vitals, INP, throttled mobile, battery, or sustained frame-rate measurement. |
+| Code/Regression | PASS | TypeScript, production build, `git diff --check`, and all 11 browser tests passed. Original logo crop pixels matched the supplied cover artwork. |
+
+### Tests, outstanding items, and next action
+
+Commands: `npm run build`; `npm run test:e2e` (11 passed, 2.2 minutes); `git diff --check`; GitHub Pages build with `VITE_BASE_PATH=/Brian/` and `VITE_SITE_URL=https://jay-rtl.github.io/Brian`. Additional manual observations used Playwright/Windows Chrome and Sharp raw-pixel comparison. No CPU/network throttling; software rendering for optional 3D.
+
+No known defect from the performed logo checks. Existing approved biography/portrait, retailer links, excerpts, contact delivery, and privacy information remain outstanding. Status: **READY FOR REVIEW**. Next action: refresh and review the official branding on the public site.
