@@ -1,0 +1,7 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, BookOpen } from 'lucide-react';
+import { books } from '../data';
+export function News() {return <><section className="page-intro page-width"><p className="eyebrow">FROM THE AUTHOR’S WORLD</p><h1>News &<br/><em>new horizons.</em></h1><p>Book updates, exhibition moments, and stories beyond the page.</p></section><NewsContent/></>;}
+function NewsContent() {const [filter,setFilter]=useState('All updates');return <section className="news-section page-width"><div className="filters" aria-label="Filter news">{['All updates','Showcases','Book news'].map(f=><button key={f} aria-pressed={filter===f} onClick={()=>setFilter(f)}>{f}</button>)}</div>{filter==='Book news'?<div className="empty-state"><BookOpen size={32}/><h2>The next chapter is on its way.</h2><p>Confirmed book announcements will appear here.</p></div>:<Link className="news-feature reveal" to="/frankfurt-book-fair-2026"><img src={books.dreamwind.photo} alt="Dreamwind’s promotional display at Frankfurt Book Fair" width="619" height="823"/><div><p className="eyebrow">SHOWCASE · 2026</p><h2>Two worlds.<br/>One international stage.</h2><p>Explore the promotional displays for The Observer and Dreamwind at Frankfurt Book Fair 2026.</p><span className="text-link">Read the showcase<ArrowUpRight size={18}/></span></div></Link>}</section>;}
+export default News;

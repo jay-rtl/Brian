@@ -1,0 +1,6 @@
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import { books, type BookId } from '../data';
+export function TextLink({to,children}:{to:string;children:React.ReactNode}) {return <Link to={to} className="text-link">{children}<ArrowUpRight size={17}/></Link>;}
+export function Atmosphere({type='observer'}:{type?:BookId}) {return <div className={`atmosphere atmosphere-${type}`} aria-hidden="true"><div className="art-backdrop"/><div className="atmosphere-shade"/><div className="stars">{Array.from({length:18},(_,i)=><i key={i} style={{left:`${(i*37+9)%100}%`,top:`${(i*19+4)%96}%`,animationDelay:`${i*.47}s`}}/>)}</div><div className="light-beam"/></div>;}
+export function Closing() {return <section className="closing section"><span className="closing-star" aria-hidden="true">✦</span><p className="eyebrow">YOUR NEXT CHAPTER</p><h2>Two worlds.<br/><em>Infinite possibilities.</em></h2><div className="closing-links"><TextLink to={books.observer.route}>The Observer</TextLink><TextLink to={books.dreamwind.route}>Dreamwind</TextLink></div></section>;}

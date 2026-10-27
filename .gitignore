@@ -1,0 +1,10 @@
+node_modules/
+.npm-cache/
+dist/
+.ssr/
+test-results/
+playwright-report/
+scripts/github-api.mjs
+.env
+.env.*
+!.env.example

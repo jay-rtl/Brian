@@ -1,0 +1,14 @@
+import React from 'react';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { basePath } from './urls';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import './styles.css';
+const root = document.getElementById('root')!;
+const app = <React.StrictMode><BrowserRouter basename={basePath || '/'}><App /></BrowserRouter></React.StrictMode>;
+if (root.hasChildNodes()) hydrateRoot(root, app, {onRecoverableError(error, info) {console.error('Hydration recovery:', error, info.componentStack);}}); else createRoot(root).render(app);
