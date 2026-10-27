@@ -4,6 +4,8 @@ Repository: https://github.com/jay-rtl/Brian
 
 Site: https://jay-rtl.github.io/Brian/
 
+The current visual direction is light. The original publication record below is retained; the latest theme change is documented under **Light theme release**.
+
 The user requested deployment to the supplied GitHub repository. It was confirmed empty, public, and accessible with administrator/push permissions using the existing Git Credential Manager login. No pre-existing project files or production data were replaced.
 
 ## Configuration
@@ -53,3 +55,46 @@ The midnight/gold editorial identity, distinct book settings, original covers, e
 - GitHub Pages supplies the static host and HTTPS. Project-level `robots.txt` is generated, but GitHub controls the hostname-root robots policy. No custom DNS or domain changes were requested.
 
 Launch assessment remains **READY FOR REVIEW** for the public author experience, with the incomplete content and contact features visibly disclosed. Publishing does not change those known limitations.
+
+## Light theme release
+
+### Implemented
+
+Changed `src/styles.css`, `index.html`, and `public/favicon.svg` to use warm ivory backgrounds, charcoal text, accessible dark antique-gold accents, and pale blue Dreamwind surfaces. Updated navigation and its mobile dialog, book controls, photographic frames, collection overlays, buttons, form fields, gallery/lightbox, footer, browser theme metadata, and favicon. Softened shadows and atmospheric backdrops to suit a light page. No cover artwork, event photograph, book copy, routes, form integration, or animation logic was changed. `README.md` records the current design direction.
+
+The stylesheet is now formatted for readable review and uses explicit paper/surface/ink tokens. Gold text was darkened for legibility rather than using the pale gold from the former dark background.
+
+### Design review
+
+The result uses an editorial paper-and-ink direction while retaining the two book worlds and their original imagery. Actual rendered screenshots were inspected for the desktop and mobile home, desktop Frankfurt showcase, mobile Dreamwind, and desktop contact page. The browser suite captured every route at 390×844, 768×1000, and 1440×1000. Covers remain in their original colors and retain their 3D presentation. No new stock images, invented claims, or decorative dependencies were added.
+
+### Audit matrix
+
+| Category / subcheck | Status | Evidence and scope |
+| --- | --- | --- |
+| Functionality | PASS | All 11 browser tests passed in 2.6 minutes: routes, original image assets, navigation, news filters, gallery arrows/Escape/focus return, synthetic swipe, form validity/disabled delivery, 3D view, and unavailable-WebGL fallback. |
+| Functionality — live message delivery | NOT TESTED | The existing disabled contact configuration remains. No delivery service was supplied. |
+| SEO | PASS | All eight prerendered routes passed the no-JavaScript content, unique title, and description checks. The deployment build retains canonical/social metadata and the sitemap. Browser theme color and favicon now match the light palette. |
+| SEO — indexing/social services | NOT TESTED | Search indexing and third-party social preview rendering were not evaluated. |
+| Responsive/Visual | PASS | All eight routes rendered at three representative widths without horizontal overflow; representative screenshots manually reviewed as listed above. Layouts and original artwork retained. |
+| Accessibility — tested scope | PASS | All eight light pages passed axe checks with WCAG A/AA tags and no reported violations; tested keyboard/modal behavior and reduced motion passed. Contrast was checked after changing the text and surface palette. |
+| Accessibility — broader assessment | NOT TESTED | Screen readers, physical devices, and comprehensive manual conformance review remain untested. This is not a certification. |
+| Security/Privacy — change scope | PASS | Diff contains presentation/metadata/documentation changes only. No dependencies, credentials, storage, tracking, or submission behavior changed. |
+| Security/Privacy — broader assessment | NOT TESTED | Existing backend/legal/privacy/content limitations remain; no new full security or legal audit was performed. |
+| Performance — local observation | PASS | One unthrottled local desktop Chrome run at 1440×1000 recorded LCP 568 ms and CLS 0.002354. Optional Three.js remained unloaded before activation; no new scripts or dependencies added. CSS remains approximately 10.2 kB gzip. |
+| Performance — field/mobile | NOT TESTED | No field Core Web Vitals, INP, throttled mobile, sustained frame-rate, or battery measurement. Local numbers are not production guarantees. |
+| Code/Regression | PASS | TypeScript and production build passed. `git diff --check` passed. The full 11-test Chrome suite passed. Optional 3D chunk-size advisory remains documented. |
+
+### Tests run
+
+- `npm run build`: default local build with TypeScript, client/SSR output, and all eight prerendered public routes.
+- `npm run test:e2e -- --grep "automated accessibility"`: initial contrast/accessibility check, 1 test passed across all eight pages.
+- `npm run test:e2e`: final full browser run, 11 passed in 2.6 minutes.
+- `$env:VITE_BASE_PATH='/Brian/'; $env:VITE_SITE_URL='https://jay-rtl.github.io/Brian'; npm run build`: GitHub Pages production build.
+- `git diff --check`: no whitespace errors after final cleanup.
+
+Environment: Windows, installed headless desktop Chrome through Playwright, localhost Vite preview, no CPU/network throttling; SwiftShader for 3D. Physical mobile hardware and other browser engines were not tested.
+
+### Outstanding items, launch readiness, and next action
+
+No known light-theme defect remains from the performed checks. Existing author-approved content, purchase links, sample chapters, contact delivery, and privacy details are still outstanding. Status remains **READY FOR REVIEW**. Next action: review the updated public site; a normal refresh should load the new hashed stylesheet once deployment completes.

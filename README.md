@@ -2,6 +2,8 @@
 
 React 19 / Vite / TypeScript / Tailwind 4 website with React Router, GSAP + ScrollTrigger, and an on-demand Three.js / React Three Fiber / Drei book viewer. Deployment is configured for `https://jay-rtl.github.io/Brian/` through `.github/workflows/deploy.yml`. See `DEPLOYMENT.md` for verification and remaining content/service setup.
 
+The current visual direction is **light**: warm ivory paper, charcoal text, dark antique-gold accents, and pale blue Dreamwind surfaces. Theme tokens and component colors are maintained in `src/styles.css`; browser theme metadata and the favicon follow the light palette. Original cover artwork and event photographs retain their supplied colors.
+
 ## Run
 
 ```powershell
