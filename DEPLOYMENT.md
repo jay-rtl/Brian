@@ -101,3 +101,35 @@ Environment: Windows, installed headless desktop Chrome through Playwright, loca
 The light theme was published successfully by https://github.com/jay-rtl/Brian/actions/runs/40398747683 from source commit `55f901888d7341529b3065525e3875b078b04266`. Live Chrome verification confirmed background `rgb(251, 248, 241)`, foreground `rgb(37, 42, 49)`, browser theme color `#fbf8f1`, and CSS color scheme `light`, including a browser context preferring dark mode. All eight live routes and the deployed gallery, 3D controls, metadata, mobile navigation, no-JavaScript pages, sitemap, and robots passed the deployment check with zero runtime/console errors.
 
 No known light-theme defect remains from the performed checks. Existing author-approved content, purchase links, sample chapters, contact delivery, and privacy details are still outstanding. Status remains **READY FOR REVIEW**. Next action: refresh and review the updated public site.
+
+## Large photographic hero background
+
+### Implemented and design review
+
+Added a prominent, original open-book background to the light homepage in response to the supplied visual reference. The reference informed the idea of a large photographic hero; its image, name, logo, text, and exact composition were not reused. The new background uses sunlit ivory pages and pale sky-blue clouds, with dark HTML text over a protected quiet area and the two official covers floating in the foreground. Desktop cover scale/position and mobile crop/overlay were adjusted to keep both the photograph and the books visible.
+
+Changed `src/pages/Home.tsx` and the homepage rules in `src/styles.css`. Added three responsive WebP assets in `public/assets/`, the original generated PNG in `design/`, and the full prompt/provenance record at `design/hero-background.md`. The built-in `image_gen` tool created the decorative background; no official cover or event photograph was regenerated or edited.
+
+The 1672px asset is 128,776 bytes, 1200px asset is 64,968 bytes, and 768px asset is 26,678 bytes. The image uses `srcSet`, reserved dimensions, `fetchPriority="high"`, empty alt text, and an `aria-hidden` decorative container. Original covers, routes, editorial content, gallery, and 3D controls remain available.
+
+### Audit matrix
+
+| Category / subcheck | Status | Evidence and scope |
+| --- | --- | --- |
+| Functionality | PASS | All 11 browser tests passed in 2.3 minutes, including eight routes and their images, navigation, filters, gallery, native form validity, disabled delivery, optional 3D, and WebGL fallback. |
+| SEO | PASS | All eight prerendered pages retained visible content and unique metadata without JavaScript; the decorative image adds no invented book or author facts. |
+| SEO — external services | NOT TESTED | Search indexing and social-platform rendering were not evaluated. |
+| Responsive/Visual | PASS | Every route rendered at 390×844, 768×1000, and 1440×1000 without horizontal overflow. Desktop and mobile homepage screenshots were manually inspected for the large background, crop, typography, and cover placement. |
+| Accessibility — tested scope | PASS | All eight pages passed axe A/AA-tagged checks with no reported violations; keyboard, reduced-motion, and focus-return checks passed. Text has a light protection layer and cover labels have a paper backing. |
+| Accessibility — broader review | NOT TESTED | Full screen-reader/manual conformance assessment and physical devices remain untested. |
+| Security/Privacy — change scope | PASS | Assets are served locally from the existing site; no new third-party requests, dependencies, data collection, credentials, or submission changes. |
+| Security/Privacy — broader review | NOT TESTED | Existing legal/backend/privacy questions remain; this visual change is not a security or legal certification. |
+| Performance — local observation | PASS | One unthrottled local desktop Chrome run recorded LCP 408 ms and CLS 0.001129. Responsive assets are approximately 129/65/27 kB. No new runtime dependency; optional Three.js remained unloaded before activation. |
+| Performance — field/mobile | NOT TESTED | Field Core Web Vitals, INP, throttled mobile, battery use, and sustained frame rate remain unmeasured. |
+| Code/Regression | PASS | TypeScript, production build, `git diff --check`, and the 11-test Chrome suite passed. |
+
+### Tests, remaining items, and next action
+
+Commands: `npm run build`; `npm run test:e2e` (11 passed, 2.3 minutes); `git diff --check`; and the GitHub Pages build with `VITE_BASE_PATH=/Brian/` and `VITE_SITE_URL=https://jay-rtl.github.io/Brian`.
+
+Environment: Windows desktop Chrome through Playwright, localhost production preview, three representative viewport sizes, no CPU/network throttling, and SwiftShader for optional 3D. No known defect from the performed checks. Existing approved author content, purchase links, excerpts, contact delivery, and privacy information remain outstanding. Status: **READY FOR REVIEW**. Next action: review the updated public homepage.

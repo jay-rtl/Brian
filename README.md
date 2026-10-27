@@ -4,6 +4,8 @@ React 19 / Vite / TypeScript / Tailwind 4 website with React Router, GSAP + Scro
 
 The current visual direction is **light**: warm ivory paper, charcoal text, dark antique-gold accents, and pale blue Dreamwind surfaces. Theme tokens and component colors are maintained in `src/styles.css`; browser theme metadata and the favicon follow the light palette. Original cover artwork and event photographs retain their supplied colors.
 
+The homepage features a large original generated open-book background, with the two official covers layered above it. Responsive WebP variants are in `public/assets/story-pages-hero*.webp`; the saved source image, complete generation prompt, and provenance are in `design/`.
+
 ## Run
 
 ```powershell

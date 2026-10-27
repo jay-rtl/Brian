@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowUpRight, Globe2 } from 'lucide-react';
 import Book from '../components/Book';
 import { books } from '../data';
-import { TextLink, Atmosphere, Closing } from './shared';
+import { TextLink, Closing } from './shared';
 export function Home() {
-  return <><section className="home-hero"><Atmosphere/><div className="hero-blue" aria-hidden="true"/><div className="hero-content page-width">
+  return <><section className="home-hero"><div className="hero-image" aria-hidden="true"><img src={assetUrl('assets/story-pages-hero.webp')} srcSet={`${assetUrl('assets/story-pages-hero-768.webp')} 768w, ${assetUrl('assets/story-pages-hero-1200.webp')} 1200w, ${assetUrl('assets/story-pages-hero.webp')} 1672w`} sizes="100vw" width="1672" height="941" alt="" fetchPriority="high"/><div className="hero-image-shade"/></div><div className="hero-content page-width">
     <div className="hero-copy"><p className="eyebrow hero-enter"><span className="tiny-star">✦</span> THE WORLDS OF BRIAN PALMIERI</p><h1 className="hero-enter">Stories beyond<br/>the <em>ordinary.</em></h1><p className="hero-description hero-enter">Between shadow and starlight,<br/>a new world is waiting for you.</p><Link to="/books" className="button solid hero-enter">Discover the books<ArrowUpRight size={18}/></Link><div className="hero-note hero-enter"><span/> Two stories. Two extraordinary worlds.</div></div>
     <div className="hero-books hero-enter"><div className="hero-observer"><Link to={books.observer.route} aria-label="Explore The Observer"><Book id="observer" priority/></Link><span className="book-label">THE UNSEEN AWAITS</span></div><div className="hero-dreamwind"><Link to={books.dreamwind.route} aria-label="Explore Dreamwind"><Book id="dreamwind" priority/></Link><span className="book-label">LET YOUR IMAGINATION FLY</span></div><span className="orbit-mark" aria-hidden="true">✦</span></div>
   </div><div className="hero-bottom page-width"><a href="#stories" className="scroll-cue"><span className="scroll-line"/>SCROLL TO EXPLORE<ArrowDown size={13}/></a><span>FAITH. WONDER. WORLDS WITHOUT LIMITS.</span><span className="hero-index">01 <i>/</i> 02</span></div></section>
