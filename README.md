@@ -2,7 +2,7 @@
 
 React 19 / Vite / TypeScript / Tailwind 4 website with React Router, GSAP + ScrollTrigger, and an on-demand Three.js / React Three Fiber / Drei book viewer. Deployment is configured for `https://jay-rtl.github.io/Brian/` through `.github/workflows/deploy.yml`. See `DEPLOYMENT.md` for verification and remaining content/service setup.
 
-The current visual direction is **light**: warm ivory paper, charcoal text, dark antique-gold accents, and pale blue Dreamwind surfaces. Theme tokens and component colors are maintained in `src/styles.css`; browser theme metadata and the favicon follow the light palette. Original cover artwork and event photographs retain their supplied colors.
+The current visual direction combines a **dark navy homepage hero** with a **light editorial site**: warm ivory paper, charcoal text, antique-gold accents, and pale blue Dreamwind surfaces. The homepage hero uses scoped ivory/gold text over the large photographic background; the remaining pages and sections keep the light palette. Primary navigation is 16px on desktop, 14px on smaller laptops, with a larger mobile menu. Theme tokens and component colors are maintained in `src/styles.css`; browser theme metadata and the favicon follow the light page palette. Original cover artwork and event photographs retain their supplied colors.
 
 The homepage features a large original generated open-book background, with the two official covers layered above it. Responsive WebP variants are in `public/assets/story-pages-hero*.webp`; the saved source image, complete generation prompt, and provenance are in `design/`.
 

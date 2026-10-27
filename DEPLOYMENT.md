@@ -135,3 +135,35 @@ Commands: `npm run build`; `npm run test:e2e` (11 passed, 2.3 minutes); `git dif
 Environment: Windows desktop Chrome through Playwright, localhost production preview, three representative viewport sizes, no CPU/network throttling, and SwiftShader for optional 3D. No known defect from the performed checks. Existing approved author content, purchase links, excerpts, contact delivery, and privacy information remain outstanding. Status: **READY FOR REVIEW**. Next action: review the updated public homepage.
 
 Published successfully by https://github.com/jay-rtl/Brian/actions/runs/40400679923 from source commit `6a7c32a17dc0ce4d2c11fb99b8697715e1a86645`. Post-publication command `node scripts/verify-deployment.mjs https://jay-rtl.github.io/Brian/` passed for all eight live routes and key interactions with zero runtime/console errors. Separate live Chrome inspections at 1440×1000 and 390×844 verified a full-width, successfully decoded hero image, no horizontal overflow, and the light color scheme. The desktop selected `story-pages-hero.webp`; the mobile selected the smaller `story-pages-hero-768.webp`. Live desktop and mobile screenshots were inspected in reduced motion.
+
+## Larger navigation and dark homepage hero
+
+### Implemented
+
+Updated `src/styles.css`: primary desktop navigation is now 16px/500 weight, with 14px text on smaller laptops. The mobile menu uses 36px text on phones and up to 52px on larger screens. The menu switches to the mobile presentation at 1000px to prevent crowding. The homepage hero now has scoped navy backgrounds, ivory text, light gold accents, a dark photographic overlay, and matching button/cover-label/scroll-indicator colors. The large existing background image and original covers are retained. Other sections and pages retain the light palette. `README.md` records the current direction.
+
+### Design review
+
+Desktop hero and phone-menu screenshots were manually inspected. The dark hero keeps the open-book photograph visible while improving the light typography’s contrast. The header remains light and the larger navigation is easier to read. Additional Chrome checks at 1440, 1024, 900, 390, and 320px found no horizontal overflow, menu overflow, or logo/navigation overlap. Measured primary menu sizes were 16/14px for desktop/laptop and 36px on phones. The hero computed background is `rgb(11, 23, 38)` with `rgb(245, 240, 230)` text; the page background remains `rgb(251, 248, 241)`.
+
+### Audit matrix
+
+| Category / subcheck | Status | Evidence and scope |
+| --- | --- | --- |
+| Functionality | PASS | All 11 browser tests passed in 2.2 minutes, including routes, assets, menu behavior, filters, gallery, form validity/disabled delivery, optional 3D, and WebGL fallback. |
+| SEO | PASS | All eight pages retained crawlable content and unique metadata without JavaScript. No routes, copy, canonical logic, or structured data changed. |
+| SEO — external services | NOT TESTED | Search indexing and social-platform previews were not evaluated. |
+| Responsive/Visual | PASS | Standard three-width route checks passed; additional menu checks at 320/390/900/1024/1440px passed. Representative desktop hero, mobile homepage, and phone menu images inspected. |
+| Accessibility — tested scope | PASS | axe checks across all eight pages reported no violations; keyboard/modal, focus return, and reduced-motion checks passed. Larger text and hero colors were checked after implementation. |
+| Accessibility — broader assessment | NOT TESTED | No full screen-reader/manual conformance assessment or physical-device verification. |
+| Security/Privacy — change scope | PASS | CSS and documentation changes only; no dependencies, image contents, external services, credentials, tracking, or collection behavior changed. |
+| Security/Privacy — broader assessment | NOT TESTED | Existing backend/privacy/legal review remains outstanding. |
+| Performance — local observation | PASS | One unthrottled local desktop Chrome sample recorded LCP 332 ms and CLS 0.002523. No new assets, scripts, or dependencies. |
+| Performance — field/mobile hardware | NOT TESTED | No field Core Web Vitals, INP, throttled mobile, frame-rate, or battery measurement. |
+| Code/Regression | PASS | TypeScript, build, `git diff --check`, and the 11-test browser suite passed. |
+
+### Tests and next action
+
+Commands: `npm run build`; `npm run test:e2e` (11 passed, 2.2 minutes); `git diff --check`; and the Pages build with `VITE_BASE_PATH=/Brian/` and `VITE_SITE_URL=https://jay-rtl.github.io/Brian`. Additional responsive observations used headless Chrome through Playwright against localhost production preview. Windows desktop Chrome; software rendering for optional 3D; no CPU/network throttling.
+
+No known defect from the performed checks. Existing approved author content, retailer links, excerpts, contact delivery, and privacy details remain pending. Status: **READY FOR REVIEW**. Next action: refresh and review the live homepage and menu.
