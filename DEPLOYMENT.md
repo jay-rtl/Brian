@@ -92,9 +92,12 @@ The result uses an editorial paper-and-ink direction while retaining the two boo
 - `npm run test:e2e`: final full browser run, 11 passed in 2.6 minutes.
 - `$env:VITE_BASE_PATH='/Brian/'; $env:VITE_SITE_URL='https://jay-rtl.github.io/Brian'; npm run build`: GitHub Pages production build.
 - `git diff --check`: no whitespace errors after final cleanup.
+- `node scripts/verify-deployment.mjs https://jay-rtl.github.io/Brian/`: post-publication check passed for all eight live routes and key interactions with zero runtime/console errors.
 
 Environment: Windows, installed headless desktop Chrome through Playwright, localhost Vite preview, no CPU/network throttling; SwiftShader for 3D. Physical mobile hardware and other browser engines were not tested.
 
 ### Outstanding items, launch readiness, and next action
 
-No known light-theme defect remains from the performed checks. Existing author-approved content, purchase links, sample chapters, contact delivery, and privacy details are still outstanding. Status remains **READY FOR REVIEW**. Next action: review the updated public site; a normal refresh should load the new hashed stylesheet once deployment completes.
+The light theme was published successfully by https://github.com/jay-rtl/Brian/actions/runs/40398747683 from source commit `55f901888d7341529b3065525e3875b078b04266`. Live Chrome verification confirmed background `rgb(251, 248, 241)`, foreground `rgb(37, 42, 49)`, browser theme color `#fbf8f1`, and CSS color scheme `light`, including a browser context preferring dark mode. All eight live routes and the deployed gallery, 3D controls, metadata, mobile navigation, no-JavaScript pages, sitemap, and robots passed the deployment check with zero runtime/console errors.
+
+No known light-theme defect remains from the performed checks. Existing author-approved content, purchase links, sample chapters, contact delivery, and privacy details are still outstanding. Status remains **READY FOR REVIEW**. Next action: refresh and review the updated public site.
