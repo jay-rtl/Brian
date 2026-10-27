@@ -1,5 +1,7 @@
 # Delivery audit — Brian Palmieri
 
+This is the **initial local-delivery audit**. The later user-authorized GitHub Pages publication and live verification are recorded in `DEPLOYMENT.md`, which supersedes this report’s original statements about deployment status and the missing hosting URL. The original content/service limitations still apply.
+
 Review date: October 27, 2026. Delivery is local source and production output in `C:/Users/it/Desktop/websites/Brian`. No production deployment, DNS change, or push was performed.
 
 ## 1. Implemented
